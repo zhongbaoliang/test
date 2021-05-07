@@ -1,2 +1,4 @@
-package collections;public class mapTest {
+package collections;
+
+public class mapTest {
 }
