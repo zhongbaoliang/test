@@ -1,7 +1,7 @@
-package thread;
-public class PrimeThread extends Thread{
+package ThreadTest;
+public class ExtendsThread extends Thread{
     long minPrime;
-    public PrimeThread(long minPrime){
+    public ExtendsThread(long minPrime){
         this.minPrime=minPrime;
     }
     public void run(){
