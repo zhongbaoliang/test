@@ -18,4 +18,9 @@ public class AbstractAndInterfaceTest extends AbstractTest implements InterfaceT
         abstractAndInterfaceTest.func3();
         abstractAndInterfaceTest.func4();
     }
+
+    @Override
+    public void func() {
+
+    }
 }
