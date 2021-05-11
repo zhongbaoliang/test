@@ -1,4 +1,4 @@
-package ThreadTest;
+package Tools.OOPTest;
 
 public interface FatherInterfaceTestable {
     void func();
