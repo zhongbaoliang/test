@@ -1,4 +1,4 @@
-package javaee.tools.OOPTest;
+package javaee.OOPTest;
 
 public abstract class AbstractTest {
     int abstractData1 =10;
