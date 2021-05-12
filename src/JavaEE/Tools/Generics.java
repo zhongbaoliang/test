@@ -1,4 +1,4 @@
-package Tools;
+package JavaEE.Tools;
 
 import java.util.Objects;
 //泛型

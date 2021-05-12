@@ -1,4 +1,4 @@
-package Tools.GCTest;
+package JavaEE.Tools.GCTest;
 
 class Cake {
     private int id;

@@ -1,6 +1,5 @@
-package Throwable.Exception;
+package JavaEE.Throwable.Exception;
 
-import java.util.HashMap;
 //运行时异常
 //数组越界异常    ArrayIndexOutOfBoundsException
 //空指针异常 NullPointerException

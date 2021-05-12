@@ -1,4 +1,4 @@
-package Throwable;
+package JavaEE.Throwable;
 //Throwable是所有异常的超类
 //分为Error 和 Exception
 
@@ -22,8 +22,8 @@ public class Test {
         }
         //可以有多个catch,捕获的异常类不能 由大到小（由父到子）
         //eg:
-        // catch (Throwable t){
-        //        System.out.println("catch the Throwable");
+        // catch (JavaEE.Throwable t){
+        //        System.out.println("catch the JavaEE.Throwable");
         //        }catch (Exception e1){
         //            System.out.println("catch the exception");
         //        }
@@ -32,7 +32,7 @@ public class Test {
         }catch (Exception e1){
             System.out.println("catch the exception");
         }catch (Throwable t){
-            System.out.println("catch the Throwable");
+            System.out.println("catch the JavaEE.Throwable");
         }
         finally {//finally一定会执行，但是可以省略
             System.out.println("finally");

@@ -1,4 +1,4 @@
-package ThreadTest;
+package JavaEE.ThreadTest;
 
 //匿名函数，lambda，线程池
 //两个线程交替执行

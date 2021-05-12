@@ -1,4 +1,4 @@
-package Tools.OOPTest;
+package JavaEE.Tools.OOPTest;
 
 public class Outer {
     //public static Object Inner1;

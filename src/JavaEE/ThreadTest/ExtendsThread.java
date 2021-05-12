@@ -1,4 +1,4 @@
-package ThreadTest;
+package JavaEE.ThreadTest;
 //创建线程方式一：
 // 继承Thread类，
 // 重写run方法；
@@ -22,6 +22,6 @@ public class ExtendsThread extends Thread{
         extendsThread.start();
 
         for(int i=0;i<10;i++)
-            System.out.println("Hello, i am Main thread ExtendsThread" + i);
+            System.out.println("Hello, i am JavaEE.Main thread ExtendsThread" + i);
     }
 }

@@ -1,4 +1,4 @@
-package Throwable.MyException;
+package JavaEE.Throwable.MyException;
 
 //用户自定义异常类只需要继承Exception，
 // 构造函数，

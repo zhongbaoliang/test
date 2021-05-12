@@ -1,8 +1,6 @@
-package Throwable.Error;
+package JavaEE.Throwable.Error;
 
 //Error类对象是由Java虚拟机生成并抛出的
-
-import java.util.HashMap;
 
 //栈溢出   StackOverflowError
 //内存溢出  OutOfMemoryError

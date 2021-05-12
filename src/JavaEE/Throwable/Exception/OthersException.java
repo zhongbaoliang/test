@@ -1,4 +1,4 @@
-package Throwable.Exception;
+package JavaEE.Throwable.Exception;
 //非运行时异常，又叫检查性异常
 //一般是I/O错误这类问题导致的
 

@@ -1,4 +1,4 @@
-package Tools.GCTest;
+package JavaEE.Tools.GCTest;
 
 public class GCTest {
     public static void main(String[] args) {

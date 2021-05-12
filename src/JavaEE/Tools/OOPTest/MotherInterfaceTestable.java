@@ -1,4 +1,4 @@
-package Tools.OOPTest;
+package JavaEE.Tools.OOPTest;
 
 public interface MotherInterfaceTestable {
     default void fun(){

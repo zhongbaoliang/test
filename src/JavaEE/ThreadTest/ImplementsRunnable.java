@@ -1,4 +1,4 @@
-package ThreadTest;
+package JavaEE.ThreadTest;
 
 //创建线程方式二
 //自定义类 实现runnable接口
@@ -36,7 +36,7 @@ public class ImplementsRunnable implements Runnable {
 
         for(int i=0;i<10;i++){
             Thread.sleep(100);
-            System.out.println("Hello, i am ImplementsRunnable Main thread " + i);
+            System.out.println("Hello, i am ImplementsRunnable JavaEE.Main thread " + i);
         }
 
     }
