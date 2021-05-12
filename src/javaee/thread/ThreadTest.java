@@ -1,5 +1,7 @@
 package javaee.thread;
 
+import javaee.thread.newThread.ExtendsThread;
+
 //匿名函数，lambda，线程池
 //两个线程交替执行
 public class ThreadTest {

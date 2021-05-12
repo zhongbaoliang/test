@@ -1,4 +1,4 @@
-package javaee.thread;
+package javaee.thread.newThread;
 
 import org.apache.commons.io.FileUtils;
 

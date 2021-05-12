@@ -1,4 +1,4 @@
-package javaee.thread;
+package javaee.thread.newThread;
 
 //创建线程方式二
 //自定义类 实现runnable接口

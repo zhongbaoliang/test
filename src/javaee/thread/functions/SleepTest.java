@@ -9,8 +9,6 @@ package javaee.thread.functions;
 //4. 每个对象都有一个锁，sleep不会释放锁
 //5. sleep可以模拟网络延时，倒计时
 
-import javaee.thread.ImplementsRunnable;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
