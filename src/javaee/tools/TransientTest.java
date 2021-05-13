@@ -16,6 +16,9 @@ import java.io.Serializable;
 //本地变量是不能被transient关键字修饰的。变量如果是用户自定义类变量，则该类需要实现Serializable接口。
 //被transient关键字修饰的变量不再能被序列化
 //静态变量不管是否被transient修饰，均不能被序列化。
+//
+
+//
 public class TransientTest {
 
     public static void main(String[] args) {

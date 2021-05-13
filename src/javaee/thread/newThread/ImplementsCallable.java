@@ -37,6 +37,7 @@ public class ImplementsCallable implements Callable {
         ImplementsCallable t2=new ImplementsCallable("2.jpg","https://www.kuangstudy.com/assert/course/c1/02.jpg");
         ImplementsCallable t3=new ImplementsCallable("3.jpg","https://www.kuangstudy.com/assert/course/c1/03.jpg");
 
+
         //创建执行服务 ExecutorService ser= Executors.newFixedThreadPool(3);
         ExecutorService ser = Executors.newFixedThreadPool(3);
 

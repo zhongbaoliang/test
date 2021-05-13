@@ -40,5 +40,6 @@ class Test{
         inner1.in();
         Outer.Inner2.in2_1();
 
+
     }
 }
