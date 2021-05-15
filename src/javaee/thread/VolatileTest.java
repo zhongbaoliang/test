@@ -1,4 +1,4 @@
-package javaee.tools;
+package javaee.thread;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

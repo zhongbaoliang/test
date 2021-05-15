@@ -6,8 +6,8 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
-//序列化机制允许将实现序列化的Java对象转换位字节序列
-//反序列化则将字节序列转换为java对象
+//序列化机就是将 内存中的java对象 转换为 字节序列 写到磁盘中
+//反序列化就是将 磁盘中的字节序列 转换为 内存中的java对象
 //使用transient关键字不序列化某个变量
 
 //注意读取的时候，读取数据的顺序一定要和存放数据的顺序保持一致

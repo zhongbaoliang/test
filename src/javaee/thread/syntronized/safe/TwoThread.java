@@ -8,7 +8,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
-
+//两个线程交替执行
 public class TwoThread  {
 
     //使用synchronized，notify，wait

@@ -1,6 +1,5 @@
 package javaee.thread.newThread;
 
-import javaee.thread.newThread.WebDownloader;
 
 import java.util.concurrent.*;
 
