@@ -1,4 +1,4 @@
-package javaee.tools;
+package javaee.oop;
 
 import java.util.Objects;
 //泛型
