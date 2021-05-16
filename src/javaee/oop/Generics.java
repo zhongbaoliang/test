@@ -1,4 +1,4 @@
-package javaee.OOPTest;
+package javaee.oop;
 
 import java.util.Objects;
 //泛型

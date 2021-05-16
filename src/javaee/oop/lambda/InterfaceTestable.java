@@ -1,4 +1,4 @@
-package javaee.OOPTest.lambda;
+package javaee.oop.lambda;
 
 public interface InterfaceTestable {
     void lambda();

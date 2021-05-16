@@ -1,4 +1,4 @@
-package javaee.OOPTest;
+package javaee.oop;
 
 //枚举类，JVM禁止对枚举类使用new ，单例模式
 //没有子类，不能被继承也不能被实现

@@ -1,4 +1,4 @@
-package javaee.OOPTest;
+package javaee.oop;
 
 public class AbstractAndInterfaceTest extends AbstractTest implements InterfaceTestable {
 

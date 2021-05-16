@@ -1,4 +1,4 @@
-package javaee.OOPTest.lambda;
+package javaee.oop.lambda;
 
 //不带参数时 ()->{}
 
