@@ -1,4 +1,4 @@
-package javaee.tools.OOPTest;
+package javaee.oop;
 
 //两个父接口中可以有同样的方法
 // 但不能有同样的默认方法

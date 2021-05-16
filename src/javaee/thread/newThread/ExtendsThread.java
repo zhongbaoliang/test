@@ -1,4 +1,4 @@
-package javaee.thread;
+package javaee.thread.newThread;
 //创建线程方式一：
 // 继承Thread类，
 // 重写run方法；

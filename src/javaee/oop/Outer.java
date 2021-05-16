@@ -1,4 +1,4 @@
-package javaee.tools.OOPTest;
+package javaee.oop;
 
 public class Outer {
     //public static Object Inner1;
@@ -39,6 +39,7 @@ class Test{
         }
         inner1.in();
         Outer.Inner2.in2_1();
+
 
     }
 }

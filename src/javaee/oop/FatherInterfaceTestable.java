@@ -1,4 +1,4 @@
-package javaee.tools.OOPTest;
+package javaee.oop;
 
 public interface FatherInterfaceTestable {
     void func();

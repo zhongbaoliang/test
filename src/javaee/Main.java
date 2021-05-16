@@ -1,6 +1,7 @@
 package javaee;
 
-import javaee.thread.*;
+import javaee.thread.newThread.ExtendsThread;
+
 public class Main {
     public static void main(String arg[]){
         ExtendsThread extendsThread = new ExtendsThread(10);
