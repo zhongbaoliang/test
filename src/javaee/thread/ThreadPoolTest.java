@@ -20,18 +20,19 @@ package javaee.thread;
 //newSingleThreadExecutor  单个线程                  1,             1,           0L, TimeUnit.MILLISECONDS,  new LinkedBlockingQueue<Runnable>())
 //new ScheduledThreadPool  定长；周期性执行任务 corePoolSize, Integer.MAX_VALUE,   0L,       NANOSECONDS,      new DelayedWorkQueue()
 
+//流程
+//创建线程池
+//将类实例提交到线程池
+//获取返回值，submit时可有可无，execute没有这一步
+//关闭线程池
 
 
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.SynchronousQueue;
+import java.util.concurrent.*;
 
 public class ThreadPoolTest {
 
-    public static void main(String[] args) {
-        //ArrayBlockingQueue<Integer>arrayBlockingQueue=new ArrayBlockingQueue<>(5);
-        //SynchronousQueue<Integer> synchronousQueue=new SynchronousQueue<>();
+    //newSingleThreadExecutor
+    public static void test1(){
         ExecutorService executorService= Executors.newSingleThreadExecutor();
         executorService.execute(new Thread(()->{
             for(int i=0;i<100;i++){
@@ -48,5 +49,77 @@ public class ThreadPoolTest {
 
         //executorService.shutdownNow();//试图终止当前正在执行的任务
         executorService.shutdown();//执行完线程池里面的所有任务
+    }
+
+    //newFixedThreadPool
+    //execute没有返回值,有任务未完成时直接抛出异常
+    public static void test21(){
+        ExecutorService executorService= Executors.newFixedThreadPool(10);
+        for (int i = 0; i < 20; i++) {
+            executorService.execute(new Thread(()->{
+                for(int ii=0;ii<100;ii++){
+                    System.out.println(Thread.currentThread().getName()+" 运行 " + ii);
+                }
+            }));
+        }
+        //executorService.shutdownNow();//试图终止当前正在执行的任务
+        executorService.shutdown();//执行完线程池里面的所有任务
+    }
+    //submit有返回值，.get()为null表示执行完成，便于进行异常处理
+    public static void test22(){
+        ExecutorService executorService= Executors.newFixedThreadPool(10);
+        Future<Boolean> futures[]=new Future[20];
+        for (int i = 0; i < 20; i++) {
+            futures[i]= (Future<Boolean>) executorService.submit(new Thread(()->{
+                for(int ii=0;ii<100;ii++){
+                    System.out.println(Thread.currentThread().getName()+" 运行 " + ii);
+                }
+            }));
+        }
+        for (int i = 0; i < 20; i++) {
+            try {
+                System.out.println("future "+i+" "+futures[i].get());
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (ExecutionException e) {
+                //对未完成的任务进行异常处理
+                e.printStackTrace();
+            }
+        }
+
+        //executorService.shutdownNow();//试图终止当前正在执行的任务
+        executorService.shutdown();//执行完线程池里面的所有任务
+    }
+
+    //newCachedThreadPool
+    public static void test3(){
+        ExecutorService executorService= Executors.newCachedThreadPool();
+        for (int i = 0; i < 20; i++) {
+            executorService.submit(new Thread(()->{
+                for(int ii=0;ii<100;ii++){
+                    System.out.println(Thread.currentThread().getName()+" 运行 " + ii);
+                }
+            }));
+        }
+        //executorService.shutdownNow();//试图终止当前正在执行的任务
+        executorService.shutdown();//执行完线程池里面的所有任务
+    }
+
+    //newScheduledThreadPool
+    public static void test4(){
+        ExecutorService executorService= Executors.newScheduledThreadPool(10);
+        for (int i = 0; i < 20; i++) {
+            executorService.submit(new Thread(()->{
+                for(int ii=0;ii<100;ii++){
+                    System.out.println(Thread.currentThread().getName()+" 运行 " + ii);
+                }
+            }));
+        }
+        //executorService.shutdownNow();//试图终止当前正在执行的任务
+        executorService.shutdown();//执行完线程池里面的所有任务
+    }
+
+    public static void main(String[] args) {
+        test22();
     }
 }

@@ -1,4 +1,4 @@
-package javaee.thread;
+package javaee.thread.threadlocal;
 
 
 public class ThreadLocalTest {
