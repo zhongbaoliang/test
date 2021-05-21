@@ -34,6 +34,7 @@ public class BIO {
         }
     }
 
+    //多线程
     public static void server(){
         ServerSocket serverSocket = null;
         try {
@@ -67,6 +68,7 @@ public class BIO {
         }).start();
     }
 
+    //线程池
     public static void server1(){
         ServerSocket serverSocket = null;
         try {
@@ -83,20 +85,21 @@ public class BIO {
                     //BlockingQueue<Future<Boolean>> futureBlockingQueue=null;
 
                     // 阻塞方法获取新的连接
-                    Socket socket = finalServerSocket.accept();
+                    Socket clientSocket = finalServerSocket.accept();
                     // 每一个新的连接都创建一个线程，负责读取数据
-                    executorService.submit(()->{
+                    executorService.submit(new Thread(()->{
                         try {
                             int len;
                             byte[] data = new byte[1024];
-                            InputStream inputStream = socket.getInputStream();
+                            InputStream inputStream = clientSocket.getInputStream();
                             // 按字节流方式读取数据
                             while ((len = inputStream.read(data)) != -1) {
                                 System.out.println(new String(data, 0, len));
                             }
                         } catch (IOException e) {
+                            e.printStackTrace();
                         }
-                    });
+                    }));
                 }
                 catch (IOException e) {
                     e.printStackTrace();
