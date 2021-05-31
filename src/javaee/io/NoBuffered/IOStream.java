@@ -1,4 +1,4 @@
-package javaee.io;
+package javaee.io.NoBuffered;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -15,7 +15,7 @@ public class IOStream {
         FileWriter fileWriter = null;
         try {
             try {
-                fileWriter = new FileWriter("src/javaee/io/demo.txt");
+                fileWriter = new FileWriter("src/javaee/io/in.txt");
 
                 fileWriter.write("demo");
             } finally {

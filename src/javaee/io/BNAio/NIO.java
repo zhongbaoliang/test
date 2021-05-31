@@ -1,4 +1,4 @@
-package javaee.io;
+package javaee.io.BNAio;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -30,7 +30,20 @@ import java.util.concurrent.*;
 public class NIO {
 
     public static void client(){
-
+        try {
+            Socket socket = new Socket("127.0.0.1", 3333);
+            try {
+                socket.getOutputStream().write((Thread.currentThread().getName()+ " : hello world "+new Date() ).getBytes());
+                Thread.sleep(2000);
+            }
+            catch (Exception e) {
+                System.out.println(Thread.currentThread().getName()+" failed");
+            }
+            socket.close();
+        }
+        catch (IOException e) {
+            System.out.println(Thread.currentThread().getName()+" failed");
+        }
     }
     public static void server() throws IOException {
         // 1. serverSelector负责轮询是否有新的连接，服务端监测到新的连接之后，不再创建一个新的线程，
@@ -102,12 +115,77 @@ public class NIO {
         }).start();
     }
 
-    public static void main(String[] args) {
-        try {
-            server();
+    public static void server1(){
+        int port=3333;
+        ServerSocketChannel serverSocketChannel;
+        Selector selector;
+        try{
+            serverSocketChannel=ServerSocketChannel.open();//创建channel
+            InetSocketAddress address = new InetSocketAddress(port);
+            serverSocketChannel.bind(address);//channel绑定端口
+            serverSocketChannel.configureBlocking(false);
+            selector=Selector.open();//创建selector
+            serverSocketChannel.register(selector,SelectionKey.OP_ACCEPT);//将服务器绑定到selector
+
         } catch (IOException e) {
             e.printStackTrace();
+            return;
         }
+
+        while(true){
+            try {
+                selector.select();
+            } catch (IOException e) {
+                e.printStackTrace();
+                break;
+            }
+
+            Set<SelectionKey> readyKeys = selector.selectedKeys();//所有等待IO的客户端
+            Iterator<SelectionKey> iterator = readyKeys.iterator();
+            while(iterator.hasNext()) {
+                SelectionKey key = iterator.next();
+                iterator.remove();
+                try {
+                    if (key.isAcceptable()) {
+                        ServerSocketChannel server = (ServerSocketChannel) key.channel();
+                        SocketChannel client = server.accept();
+                        System.out.println("接受连接，来自 " + client);
+                        client.configureBlocking(false);
+                        SelectionKey clientKey = client.register(selector,SelectionKey.OP_WRITE|SelectionKey.OP_READ);
+                        ByteBuffer buffer = ByteBuffer.allocate(100);
+                        clientKey.attach(buffer);
+                    }
+                    if(key.isReadable()){
+                        SocketChannel client = (SocketChannel) key.channel();
+                        ByteBuffer output = (ByteBuffer) key.attachment();
+                        client.read(output);
+                    }
+                    if(key.isWritable()){
+                        SocketChannel client = (SocketChannel) key.channel();
+                        ByteBuffer output = (ByteBuffer) key.attachment();
+                        output.flip();
+                        client.write(output);
+                        output.compact();
+                    }
+
+                } catch (IOException e) {
+                    key.cancel();
+                    try {
+                        key.channel().close();
+                    } catch (IOException ioException) {
+                        ioException.printStackTrace();
+                    }
+                    e.printStackTrace();
+
+                }
+            }
+
+        }
+
+    }
+
+    public static void main(String[] args) {
+        server1();
         // TODO 创建多个线程，模拟多个客户端连接服务端
         for (int i = 0; i < 10; i++) {
             new Thread(() -> client()).start();

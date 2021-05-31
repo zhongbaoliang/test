@@ -1,6 +1,7 @@
 package javaee.throwable.Exception;
 //非运行时异常，又叫检查性异常
 //一般是I/O错误这类问题导致的
+//必须try,catch或者throws
 
 //试图超越文件末尾继续读取文件
 //试图打开不存在的文件

@@ -102,7 +102,7 @@ public class TwoThread  {
         final BlockingQueue<Integer> blockingQueue1 = new ArrayBlockingQueue<Integer>(10);
         new Thread(new Runnable() {
             public void run() {
-                for (int i = 1; i <= 5; i++) {
+                for (int i = 0; i <= 8; i+=2) {
                     try {
                         blockingQueue.put(i);
                         System.out.println(blockingQueue1.take());
@@ -114,7 +114,7 @@ public class TwoThread  {
         }).start();
         new Thread(new Runnable() {
             public void run() {
-                for (int i = 6; i <= 10; i++) {
+                for (int i = 1; i <= 9; i+=2) {
                     try {
                         System.out.println(blockingQueue.take());
                         blockingQueue1.put(i);
@@ -128,7 +128,7 @@ public class TwoThread  {
 
     public static void main(String[] args) {
         //func1();
-        func2();
+        func3();
     }
 
 }

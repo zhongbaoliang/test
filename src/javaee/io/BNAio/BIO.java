@@ -1,4 +1,4 @@
-package javaee.io;
+package javaee.io.BNAio;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -28,6 +28,7 @@ public class BIO {
             catch (Exception e) {
                 System.out.println(Thread.currentThread().getName()+" failed");
             }
+            socket.close();
         }
         catch (IOException e) {
             System.out.println(Thread.currentThread().getName()+" failed");
@@ -115,7 +116,5 @@ public class BIO {
         for (int i = 0; i < 10; i++) {
             new Thread(() -> client()).start();
         }
-
     }
-
 }

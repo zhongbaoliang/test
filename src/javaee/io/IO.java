@@ -29,15 +29,25 @@ package javaee.io;
 //主动请求
 //1. 阻塞IO模型
 // 进程阻塞于recvfrom
-// 1.1 多线程。一个线程处理一个连接，造成资源匮乏
+// 1.1 多线程。一个线程处理一个连接
 // 1.2 线程池。
+//问题 线程创建切换开销，造成资源匮乏
+//解决   需要IO时才创建线程，线程自行IO并处理数据
+//      系统进行IO并返回，然后创建线程进行处理
+
 //2.非阻塞IO模型
 // 轮询查看那些连接需要IO。
 //  进程轮询进行N次系统调用recvfrom，数据未就绪时recvfrom返回错误码EWOULDBLOCK状态
+
 //3. IO多路复用
 //select和poll系统调用，阻塞于二者之一
+//select传所有连接到内核，内核访问所有连接是否需要IO。
 // selector多路复用器查看那些连接需要IO。O(K+1)
 //   1次系统调用select，系统调用时遍历N个连接，进程阻塞于select
+//   k个线程执行k次recvfrom
+//问题  select传递内容过多，内核主动遍历N次
+//解决  内核开辟空间存储连接信息——epoll：epoll_create开辟内核空间,epoll_ctl添加修改删除文件描述符
+//     不主动遍历
 
 
 //被动响应
@@ -45,17 +55,20 @@ package javaee.io;
 // 进程进行系统调用sigaction，数据未就绪时进程继续执行
 // 数据就绪之后系统向进程递交SIGIO
 // 进程进行系统调用recvfrom复制数据
+
 //5. 异步IO模型。系统读取完了返回数据
 // 进程调用系统调用aio_read，数据未就绪时返回状态
 // 进程继续运行，数据就绪并且系统已经将数据复制
 // 系统向进程递交aio_read指定的数据
-
+//就是IO请求交给内核处理，内核负责IO处理。内核与进程并行执行，等IO完了内核向进程提交数据
 
 //JAVA IO模型
 //BIO 同步阻塞.阻塞于recvfrom，同上述1
 //NIO 一个线程或者cpu个数个线程 处理一个IO请求，同上述3
 //AIO 又称NIO.2，同上述5
 
+
+import sun.net.www.http.HttpClient;
 
 //一个线程处理一个有效IO请求，
 public class IO {

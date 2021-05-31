@@ -13,7 +13,7 @@ package javaee.jvm.gc;
 //标记整理法
 
 //3. minorGC和majorGC
-//minorGC发生在新生代，非常频繁，速度很快；采用标记复制法
+//minorGC发生在新生代,，非常频繁，速度很快；采用标记复制法
 //majorGC发生在老年代，必定伴随有minorGC，速度很慢；采用标记整理法
 public class GCTest {
     public static void main(String[] args) {

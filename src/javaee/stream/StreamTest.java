@@ -32,6 +32,11 @@ import java.util.stream.Stream;
 *   2.flatMap()
 *
 * 三. 终止操作
+* collect
+* count
+* min
+* max
+* reduce
 *
 * */
 class Employee{
@@ -69,9 +74,9 @@ public class StreamTest {
         stream1.forEach(System.out::println);
     }
 
+    //2. 通过Arrays中的静态方法stream()方法获取数组流
     @Test
     public void test2(){
-        //2. 通过Arrays中的静态方法stream()方法获取数组流
         Employee[] employees= {new Employee(12,"wang"),
                 new Employee(22,"huang"),
                 new Employee(32,"zhou"),
@@ -84,9 +89,9 @@ public class StreamTest {
         stream2.map(Employee::getName).forEach(System.out::println);
     }
 
+    //3. 通过Stream类中的静态方法of()
     @Test
     public void test3(){
-        //3. 通过Stream类中的静态方法of()
         Stream<String> stream3=Stream.of("aa","bb","cc");
         stream3.filter((s3)->!"bb".equals(s3)).forEach(System.out::println);
         /*下面两行代码不等同于上行代码，原因是stream流只能执行一次中间操作
