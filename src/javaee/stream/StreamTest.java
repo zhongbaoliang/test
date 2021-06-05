@@ -66,6 +66,45 @@ class Employee{
 }
 
 public class StreamTest {
+    @Test
+    public void createStream(){
+        System.out.println("1. Arrays.stream 创建并执行skip筛选");
+        String strs[]={"wang","lao","ban","a","a"};
+        Stream<String> stream1=Arrays.stream(strs);
+        stream1.skip(3).forEach(System.out::println);
+
+        System.out.println("--------------");
+        System.out.println("2. Collection.stream 创建并执行filter筛选");
+
+        List<String> list=Arrays.asList(strs);
+        Stream<String> stream2=list.stream();
+        stream2.filter((s)->!"a".equals(s)).forEach((s)-> System.out.println(s));
+
+        System.out.println("--------------");
+        System.out.println("3. Stream.of 创建并执行distinct筛选");
+
+
+        Stream<String > stream3=Stream.of("wang","lao","ban","a","a");
+        stream3.distinct().forEach(System.out::println);
+
+        System.out.println("--------------");
+        System.out.println("4. Stream.iterate 创建并执行limit筛选");
+
+        Stream<Integer> stream4=Stream.iterate(0,(i)-> {
+            return i++;
+        });
+        stream4.limit(2).forEach(System.out::println);
+
+        System.out.println("--------------");
+        System.out.println("5. Stream.generate 创建并执行limit筛选");
+        Stream<Integer> stream5=Stream.generate(()->{
+            return (int) Math.random()*10;
+        });
+        stream5.limit(3).forEach(System.out::println);
+
+
+    }
+
     //1. 可以通过Collection系列集合提供的stream()和parallelStream()方法获取流
     @Test
     public void test1(){

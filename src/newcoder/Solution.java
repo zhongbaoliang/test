@@ -2,6 +2,8 @@ package newcoder;
 //Arrays.copyOfRange(arr,from,to) 起始位置，结束位置（+1）
 
 
+import org.junit.Test;
+
 import java.util.Scanner;
 import java.util.*;
 
@@ -317,6 +319,54 @@ public class Solution {
         return ans;
     }
 
+    //JZ15 二进制1的个数
+    private final long arr[]=new long[32];
+    @Test
+    public void test15(){
+        System.out.println(hammingWeight(-1));
+    }
+    public int hammingWeight(int n) {
+        //return Integer.toBinaryString(n).replaceAll("0","").length();
+        int ans=0;
+        while(n!=0){
+            if((n&1)==1)
+                ans++;
+            n=n>>>1;
+        }
+        return ans;
+    }
+
+    //JZ16 数值的整数次方
+    //快速幂算法
+    @Test
+    public void test16(){
+        System.out.println(myPow(2,5));
+
+    }
+    public double myPow(double x, int n) {
+        if(x==0)return 0;
+        double ans=1,b=x;
+        int a=n;
+        if(a<0){
+            a=-a;
+            b=1/b;
+        }
+
+        while(a!=0){
+            if((a&1)==1)
+                ans*=b;
+            a=a>>>1;
+            b*=b;
+        }
+
+        /*while(a--!=0){//O(n)
+            ans*=x;
+        }*/
+
+        return ans;
+    }
+
+
     public static void main(String[] args) {
         //testNC22();
 
@@ -327,7 +377,6 @@ public class Solution {
         char arr[][]={{'a'}};
         System.out.println(exist(arr,"ab"));
 
-
-
     }
+
 }
