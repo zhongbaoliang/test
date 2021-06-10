@@ -367,6 +367,23 @@ public class Solution {
     }
 
 
+    //JZ19 正则表达式匹配
+
+    public boolean isMatch(String s, String p) {
+        int i=0;
+
+        while(i!=s.length()){
+            if(s.charAt(i)==p.charAt(i))
+                i++;
+            else{
+
+            }
+
+        }
+        return true;
+    }
+
+
     public static void main(String[] args) {
         //testNC22();
 

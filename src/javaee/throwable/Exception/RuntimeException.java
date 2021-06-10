@@ -5,7 +5,6 @@ package javaee.throwable.Exception;
 //空指针异常 NullPointerException
 //算术异常  ArithmeticException
 //丢失资源  MissingResourceException
-//找不到类  ClassNotFoundException
 //...
 
 public class RuntimeException {
