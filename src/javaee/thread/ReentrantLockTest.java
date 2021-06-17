@@ -8,6 +8,7 @@ import java.util.concurrent.locks.ReentrantLock;
 //可重入锁
 //使用变量前加锁，用完后解锁
 //推荐使用以下格式
+//private final ReentrantLock lock=new ReentrantLock();
 //lock.lock();
 //try{
 //    /*代码区*/

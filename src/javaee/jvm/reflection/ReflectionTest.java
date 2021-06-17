@@ -17,13 +17,14 @@ import java.lang.annotation.ElementType;
 public class ReflectionTest {
 
     @Test
-    public void test1(){
+    public void test1() throws InstantiationException, IllegalAccessException {
         Class c1=Object.class;
         Class c2=Comparable.class;
         Class c3=String[].class;
         Class c4=int[][].class;
         Class c5=Override.class;
         Class c6= ElementType.class;
+        //ElementType elementType=(ElementType)c6.newInstance();
         Class c7=Integer.class;
         Class c8=void.class;
         Class c9=Class.class;

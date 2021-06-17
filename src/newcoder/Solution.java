@@ -368,21 +368,144 @@ public class Solution {
 
 
     //JZ19 正则表达式匹配
+    public static void JZ19(){
+        System.out.println(isMatch("aaa","ab*a*c*a"));
 
-    public boolean isMatch(String s, String p) {
-        int i=0;
+    }
+    public static boolean isMatch(String s, String p) {
+        int m=s.length(),n=p.length();
+        boolean dp[][]=new boolean[m+1][n+1];
+        dp[0][0]=true;
+        for(int i=2;i<n+1;i+=2)
+            if(p.charAt(i-1)=='*'&&dp[0][i-2])
+                dp[0][i]=true;
+        for(int i=1;i<m+1;i++)
+            for(int j=1;j<n+1;j++){
+                if(p.charAt(j-1)=='*'){
+                    if((j>1&&dp[i][j-2])||
+                            //(dp[i-1][j-1]&&(p.charAt(j-2)=='.'||p.charAt(j-2)==s.charAt(i-1)))
+                            //把模式串的* 和 主串的对应的字符去掉；注意此处仅仅是将前一字符匹配两次（*一次，字符本身一次）
 
-        while(i!=s.length()){
-            if(s.charAt(i)==p.charAt(i))
-                i++;
+                            (dp[i-1][j]&&(p.charAt(j-2)=='.'||p.charAt(j-2)==s.charAt(i-1)))
+                            //主串前移一位；匹配前一字符至少一次
+                            )
+                        dp[i][j]=true;
+
+                }
+                else{
+                    if(dp[i-1][j-1]&&(s.charAt(i-1)==p.charAt(j-1)||p.charAt(j-1)=='.'))
+                        dp[i][j]=true;
+                }
+            }
+        return dp[m][n];
+    }
+
+    //JZ20 表示数值的字符串——词法分析
+    //正则语言的三种形式：文法，正则式，自动机
+    //根据描述写出正则式，根据正则式画有限自动机，转换为DNF，即去空化，确定化（只有一个起始状态）
+    public static boolean isNumber(String s) {
+        int state=0;
+        Map[] map = {
+                new HashMap<Character, Integer>() {{ put(' ',0); put('s',1); put('d',2); put('.',8);}}, // 0.
+                new HashMap<Character, Integer>() {{ put('d',2); put('.',8);}},                           // 1.
+                new HashMap<Character, Integer>() {{ put('d',2); put('.',3); put('e',4); put(' ',7);}}, // 2.
+                new HashMap<Character, Integer>() {{ put('d', 3); put('e', 4); put(' ', 7); }},              // 3.
+                new HashMap<Character, Integer>() {{ put('s', 5); put('d',6);}},                                        // 4.
+                new HashMap<Character, Integer>() {{ put('d', 6);}},                           // 5.
+                new HashMap<Character, Integer>() {{ put('d', 6); put(' ',7);}},                                        // 6.
+                new HashMap<Character, Integer>() {{ put(' ', 7); }},                           // 7.
+                new HashMap<Character, Integer>() {{ put('d', 3); }}                                         // 8.
+        };
+        int len=s.length(), i=0;
+        while(i<len){
+            char ch=s.charAt(i++);
+            if(ch>='0'&&ch<='9')ch='d';
+            else if(ch=='e'||ch=='E') ch='e';
+            else if(ch=='+'||ch=='-') ch='s';
+            Object obj= map[state].get(ch);
+            if(obj==null)return false;
+            state=(int)obj;
+
+        }
+
+        if(state==2||state==3||state==6||state==7)
+            return true;
+        return false;
+    }
+    public static void JZ20(){
+        System.out.println(isNumber("+12.23e+456"));
+    }
+
+
+    //JZ56 newCode 删除链表中重复的结点
+    //
+    public ListNode deleteDuplication1(ListNode pHead) {
+        if(pHead==null||pHead.next==null)
+            return pHead;
+        ListNode pre=pHead, ptr=pHead.next;
+        while(ptr!=null){
+            if(pre.val==ptr.val){
+                while(pre.val==ptr.val){
+                    if(ptr.next==null)return null;
+                    ptr=ptr.next;
+                }
+                pHead=ptr;
+                pre=pHead;
+                ptr=pHead.next;
+            }
             else{
-
+                break;
+            }
+        }
+        while(ptr!=null&&ptr.next!=null){
+            if(ptr.val==ptr.next.val){
+                ptr=ptr.next;
+            }
+            else {
+                if(ptr!=pre.next){
+                    pre.next=ptr.next;
+                    //pre=pre.next;
+                    ptr=pre.next;
+                }
+                else{
+                    pre=ptr;
+                    ptr=ptr.next;
+                }
             }
 
         }
-        return true;
+        if(ptr!=pre.next)//pre.next到ptr都相等，且ptr.next==null
+            pre.next=null;
+        return pHead;
+
     }
 
+    //设置虚拟头节点，避免头结点额外处理，也可递归来简化
+    public ListNode deleteDuplication(ListNode pHead){
+        ListNode vHead=new ListNode(-1);
+        vHead.next=pHead;
+        ListNode pre=vHead,ptr=pHead;
+        while(ptr!=null){
+            if(ptr.next!=null){
+                if (ptr.val != ptr.next.val) {
+                    if (ptr == pre.next) {
+                        pre = ptr;
+                    } else {
+                        pre.next = ptr.next;
+                    }
+                }
+                ptr=ptr.next;
+            }
+            else{
+                if (ptr != pre.next) {
+                    pre.next = null;
+                }
+                ptr=null;
+            }
+
+        }
+        return vHead.next;
+    }
 
     public static void main(String[] args) {
         //testNC22();
@@ -391,9 +514,7 @@ public class Solution {
 
         //JZ01();
 
-        char arr[][]={{'a'}};
-        System.out.println(exist(arr,"ab"));
-
+        JZ20();
     }
 
 }

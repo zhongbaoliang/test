@@ -1,4 +1,4 @@
-package javaee.thread;
+package javaee.thread.pool;
 
 //作用：重用已存在的线程，降低线程创建和销毁造成的消耗；
 //新任务到来时:
@@ -20,11 +20,16 @@ package javaee.thread;
 //newSingleThreadExecutor  单个线程                  1,             1,           0L, TimeUnit.MILLISECONDS,  new LinkedBlockingQueue<Runnable>())
 //new ScheduledThreadPool  定长；周期性执行任务 corePoolSize, Integer.MAX_VALUE,   0L,       NANOSECONDS,      new DelayedWorkQueue()
 
+//newWorkStealingPool   可指定线程个数，也可以让JVM自适应创建，更有利于并发
+
 //流程
 //创建线程池
 //将类实例提交到线程池
 //获取返回值，submit时可有可无，execute没有这一步
 //关闭线程池
+
+//execute只能runnable，submit可提交runnable或callable
+//execute会直接抛出异常，而submit需要通过Future.get()获取异常
 
 
 import java.util.concurrent.*;
@@ -119,7 +124,47 @@ public class ThreadPoolTest {
         executorService.shutdown();//执行完线程池里面的所有任务
     }
 
-    public static void main(String[] args) {
-        test22();
+    //newWorkStealingPool
+    //充分利用CPU，采用分治思想
+    //可指定线程数，不指定时JVM根据本机内核线程数创建
+    //每个线程都有一个LIFO的工作队列
+    //当有线程空闲时会窃取其他线程的工作队列尾部任务
+    //窃取发生冲突时采用CAS解决
+    //
+    // 创建的是守护线程，主线程需要等守护线程结束
+    // 任务被乱序执行
+    public static void test5() throws ExecutionException, InterruptedException {
+        int threads = 10;
+        // 用于计数线程是否执行完成
+        CountDownLatch countDownLatch = new CountDownLatch(threads);
+        ExecutorService executorService=Executors.newWorkStealingPool();
+        for (int i = 0; i < threads; i++) {
+            //都是守护线程，wt.setDaemon(true);
+            executorService.execute(new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        Thread.sleep(1000);
+                        System.out.println(Thread.currentThread().getName());
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    } finally {
+                        countDownLatch.countDown();
+                    }
+                }
+            }));
+        }
+        countDownLatch.await();
+        System.out.println("---- end ----");
+    }
+
+    public static void main(String[] args){
+        try {
+            test5();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }
