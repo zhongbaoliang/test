@@ -17,9 +17,9 @@ public class ByteStream {
     public static void noBuffered() throws IOException {
         FileInputStream fileInputStream=null;
         FileOutputStream fileOutputStream=null;
-        try {
-            fileInputStream=new FileInputStream("src/javaee/io/basic/ByteStream.java");
-            fileOutputStream=new FileOutputStream("src/javaee/io/out.txt");
+        try {//src/javaee/io/basic/ByteStream.java不能如此使用相对路径，maven项目是在target里面，要读取源文件必须通过
+            fileInputStream=new FileInputStream("D:\\IDEA\\IDEAPro\\github\\test\\src\\main\\java\\javaee\\io\\basic\\ByteStream.java");
+            fileOutputStream=new FileOutputStream("D:\\IDEA\\IDEAPro\\github\\test\\src\\main\\java\\javaee\\io\\out.txt");
             int c;
             while((c=fileInputStream.read())!=-1){
                 fileOutputStream.write(c);
@@ -50,8 +50,8 @@ public class ByteStream {
          *
          * */
 
-        try(FileInputStream fileInputStream=new FileInputStream("src/javaee/io/basic/ByteStream.java");
-            FileOutputStream fileOutputStream=new FileOutputStream("src/javaee/io/out.txt");) {
+        try(FileInputStream fileInputStream=new FileInputStream("D:\\IDEA\\IDEAPro\\github\\test\\src\\main\\java\\javaee\\io\\basic\\ByteStream.java");
+            FileOutputStream fileOutputStream=new FileOutputStream("D:\\IDEA\\IDEAPro\\github\\test\\src\\main\\java\\javaee\\io\\out.txt");) {
             int len=0;
             byte[] buffer=new byte[1024];
             while((len=fileInputStream.read(buffer))!=-1){
@@ -67,8 +67,8 @@ public class ByteStream {
     }
 
     public static void buffered1(){
-        try(FileInputStream fileInputStream=new FileInputStream("src/javaee/io/basic/ByteStream.java");
-            FileOutputStream fileOutputStream=new FileOutputStream("src/javaee/io/out.txt");
+        try(FileInputStream fileInputStream=new FileInputStream("D:\\IDEA\\IDEAPro\\github\\test\\src\\main\\java\\javaee\\io\\basic\\ByteStream.java");
+            FileOutputStream fileOutputStream=new FileOutputStream("D:\\IDEA\\IDEAPro\\github\\test\\src\\main\\java\\javaee\\io\\out.txt");
             BufferedInputStream bufferedInputStream=new BufferedInputStream(fileInputStream);
             BufferedOutputStream bufferedOutputStream=new BufferedOutputStream(fileOutputStream);
             ) {
@@ -99,3 +99,4 @@ public class ByteStream {
         System.out.println("buffered1 time " + (System.currentTimeMillis()-l) + " ms");
     }
 }
+Byte
