@@ -1,10 +1,19 @@
 package javaee.io;
+//内码：运行时char或者string在内存中的编码方式
+//外码：除了内码都是外码
+//内码采用UTF-16——决定了char占两个字节
+//外码采用UTF-8
+//UTF-16与UTF-8是unicode的不同实现形式
+
+
 
 //字符流与字节流
-//unicode  字节
 //字节数据 图片音频，视频
+//字节流传输的是二进制数据流
+// 字节流 InputStream,OutputStream
+
 //字符数据 文本
-//字节流 InputStream,OutputStream
+//字符流传输的是字符char
 //字符流 Reader,Writer
 
 //阻塞与非阻塞：是否立即有返回值

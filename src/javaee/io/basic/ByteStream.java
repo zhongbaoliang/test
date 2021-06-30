@@ -99,4 +99,3 @@ public class ByteStream {
         System.out.println("buffered1 time " + (System.currentTimeMillis()-l) + " ms");
     }
 }
-Byte
