@@ -9,6 +9,7 @@ public class SingletonTest {
 //饿汉模式  多线程安全
 //通过反射可以创建多个对象
 class Singleton1{
+    //初始化时期就创建了对象
     private static Singleton1 instance=new Singleton1();
     private Singleton1(){}
 
@@ -18,6 +19,7 @@ class Singleton1{
 }
 
 //懒汉模式
+//首次使用时创建
 class Singleton2{
     private static Singleton2 instance =null;
     private Singleton2(){}
@@ -47,6 +49,7 @@ class Singleton3{
 
 //枚举类型
 //解决了反射创建对象问题
+//枚举中每个元素都是static final对象，在加载时创建
 enum Singleton4{
     ONE;
 

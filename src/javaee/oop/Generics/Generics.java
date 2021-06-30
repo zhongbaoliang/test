@@ -1,4 +1,4 @@
-package javaee.oop;
+package javaee.oop.Generics;
 
 import java.util.Objects;
 //泛型

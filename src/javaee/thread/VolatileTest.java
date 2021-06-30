@@ -5,8 +5,8 @@ import java.util.Date;
 
 //volatile
 //修饰变量
-// 保证变量的可见性，
-// 前后代码的有序性（禁止指令重排序）；
+// 保证变量的可见性 ; 写操作立马写主存，线程的监听器监听主存数据变化，若变了则使线程内存数据副本失效
+// 前后代码的有序性（禁止指令重排序）; 内存屏障
 // 不保证操作的原子性
 
 //Thread.activeCount()存活线程个数，不包括守护线程;
@@ -49,7 +49,8 @@ public class VolatileTest {
         for(int i=0;i<10;i++){
             new Thread(()->{
                 for (int i1 = 0; i1 < 1000; i1++) {
-                    synchronized (VolatileTest.class){
+                    //synchronized (VolatileTest.class)
+                    {
                         inc++;
                     }
                     //increase();
