@@ -7,6 +7,40 @@ import org.junit.Test;
 import java.util.Scanner;
 import java.util.*;
 
+class MinStack {
+
+    /** initialize your data structure here. */
+
+    Stack<Integer> s;
+    Stack<Integer> min;
+    public MinStack() {
+        s=new Stack<Integer>();
+        min=new Stack<Integer>();
+    }
+
+    public void push(int x) {
+        if(!min.isEmpty()&&x>min.peek())
+            min.push(min.peek());
+        else
+            min.push(x);
+        s.push(x);
+
+    }
+
+    public void pop() {
+        s.pop();
+        min.pop();
+    }
+
+    public int top() {
+        return s.peek();
+    }
+
+    public int min() {
+        return min.peek();
+    }
+}
+
 class ListNode {
     int val;
     ListNode next;
@@ -506,6 +540,40 @@ public class Solution {
         }
         return vHead.next;
     }
+    public static void JZ29(){
+        int[][] arr={{1,2},{3,4}};
+        printMatrix(arr);
+    }
+    public static ArrayList<Integer> printMatrix(int [][] matrix) {
+        //边界指针
+
+        if(matrix==null||matrix.length==0||matrix[0].length==0)return new ArrayList(0);
+        int top=0,left=0,right=matrix[0].length-1,bottom=matrix.length-1;
+        int len=matrix.length*matrix[0].length;
+        ArrayList<Integer> ans=new ArrayList(len);
+        int idx=0;
+        while(idx<len){
+            for(int col=left;col<=right;col++,idx++){
+                ans.add(matrix[top][col]);
+            }
+            for(int row=top+1;row<=bottom;row++,idx++){
+                ans.add(matrix[row][right]);
+            }
+            if(idx==len)break;
+
+            for(int col=right-1;col>=left;col--,idx++){
+                ans.add(matrix[bottom][col]);
+            }
+            for(int row=bottom-1;row>top;row--,idx++){//注意是>
+                ans.add(matrix[row][left]);
+            }
+            left++;
+            right--;
+            top++;
+            bottom--;
+        }
+        return ans;
+    }
 
     public static void main(String[] args) {
         //testNC22();
@@ -514,7 +582,7 @@ public class Solution {
 
         //JZ01();
 
-        JZ20();
+        JZ29();
     }
 
 }

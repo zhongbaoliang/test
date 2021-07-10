@@ -17,7 +17,12 @@
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
-            <version>1.3.2</version>
+            <version>1.4</version>
+        </dependency>
+        <dependency>
+            <groupId>JUnit</groupId>
+            <artifactId>JUnit</artifactId>
+            <version>3.8.1</version>
         </dependency>
     </dependencies>
     

@@ -1,5 +1,9 @@
 package javaee.collections;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.concurrent.ArrayBlockingQueue;
 //阻塞队列：线程安全。提供阻塞的插入删除方法 put和take
 
@@ -21,5 +25,22 @@ public class QueueTest {
         arrayBlockingQueue.add(2);
         arrayBlockingQueue.offer(3);
         arrayBlockingQueue.poll();
+
+    }
+    public static void noBlocking(){
+        Queue<Integer> queue=new LinkedList<>();
+        queue.offer(2);
+        queue.poll();
+        if(queue.isEmpty())return;
+    }
+
+    public static void deQueue(){
+        Deque<Integer> deque=new ArrayDeque<>();
+        deque.addFirst(1);
+        deque.addLast(10);
+        deque.getFirst();
+        deque.getLast();
+        deque.pollFirst();
+        deque.pollLast();
     }
 }
