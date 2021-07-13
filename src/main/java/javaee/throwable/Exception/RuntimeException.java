@@ -10,7 +10,13 @@ package javaee.throwable.Exception;
 public class RuntimeException {
     public static void main(String args[]){
         String str="123*456";
-        int num=Integer.parseInt(str);
+        try{
+            int num=Integer.parseInt(str);
+        }catch (Exception e){
+            System.out.println(e);
+        }
+
+
         //字符串转为数字，异常NumberFormatException——数据格式异常
     }
 }

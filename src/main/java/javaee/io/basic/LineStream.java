@@ -1,14 +1,8 @@
-<<<<<<< HEAD
-package javaee.io.NoBuffered;
 
-import java.io.*;
-
-=======
 package javaee.io.basic;
 
 import java.io.*;
-//处理一行
->>>>>>> origin/master
+
 //BufferedReader,PrintWriter
 public class LineStream {
     public static void main(String[] args) throws IOException {
