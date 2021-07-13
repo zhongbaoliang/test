@@ -2,7 +2,9 @@
 package javaee.io.basic;
 
 import java.io.*;
+
 //处理一行
+
 
 //BufferedReader,PrintWriter
 public class LineStream {

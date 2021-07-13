@@ -13,6 +13,7 @@ public class CharacterStream {
     public static void main(String[] args) throws IOException {
 
 
+
         long l = System.currentTimeMillis();
         FileReader fileReader=null;
         FileWriter fileWriter=null;
