@@ -19,11 +19,12 @@
             <artifactId>commons-io</artifactId>
             <version>1.4</version>
         </dependency>
+
         <dependency>
             <groupId>JUnit</groupId>
             <artifactId>JUnit</artifactId>
             <version>3.8.1</version>
         </dependency>
     </dependencies>
-    
+
 </project>

@@ -19,10 +19,11 @@ import java.util.concurrent.ArrayBlockingQueue;
 
 
 public class QueueTest {
+    @SuppressWarnings("unchecked")
     public static void main(String[] args) throws InterruptedException {
         ArrayBlockingQueue<Integer> arrayBlockingQueue=new ArrayBlockingQueue(3);
-        arrayBlockingQueue.put(1);
-        arrayBlockingQueue.add(2);
+        //arrayBlockingQueue.put(1);
+        //arrayBlockingQueue.add(2);
         arrayBlockingQueue.offer(3);
         arrayBlockingQueue.poll();
 

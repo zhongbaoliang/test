@@ -1,4 +1,6 @@
-package javaee.throwable;
+
+package javaee.grammerTest;
+
 
 public class TryCatchFinallyTest {
     public static String output ="";
