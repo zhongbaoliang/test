@@ -12,15 +12,15 @@ package javaee.oop;
 //         };
 public class Outer {
     //public static Object Inner1;
-    private String outStaticVar ="外部类成员属性";
-    public void outStaticMethod(){
+    private String outVar ="外部类成员属性";
+    public void outMethod(){
         System.out.println("外部类成员方法！");
     }
 
-    public static void outMethod(){
+    public static void outStaticMethod(){
         System.out.println("外部类静态方法");
     }
-    private static String outVar="外部类静态属性";
+    private static String outStaticVar="外部类静态属性";
 
     //1. 成员内部类
     class Inner1{
@@ -41,23 +41,26 @@ public class Outer {
     //2. 静态内部类
     static class Inner2{
         public static void in2_1(){
-            //outStaticVar="静态内部类";
-            outVar="静态内部类";
-            //outStaticMethod();
-            outMethod();
+            outStaticVar="静态内部类";
+            //outVar="静态内部类";
+            outStaticMethod();
+            //outMethod();
             System.out.println("静态内部类的静态方法只能访问外部类的静态属性和静态方法！");
         }
         public void in2_2(){
-            //outStaticVar="静态内部类";
-            outVar="静态内部类";
-            //outStaticMethod();
-            outMethod();
+            outStaticVar="静态内部类";
+            //outVar="静态内部类";
+            outStaticMethod();
+            //outMethod();
             System.out.println("静态内部类的成员方法只能访问外部类的静态属性和静态方法！");
 
         }
     }
 }
 class Test{
+    public void func(){
+        System.out.println("My func");
+    }
     public static void main(String args[]){
 
         Outer outer=new Outer();
@@ -82,6 +85,12 @@ class Test{
         Outer.Inner2.in2_1();
 
         //4. 匿名内部类
+        new Test(){
+            @Override
+            public void func(){
+                System.out.println("匿名内部类重写func");
+            }
+        }.func();
         new Runnable(){
             @Override
             public void run(){}
