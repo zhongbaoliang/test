@@ -574,6 +574,54 @@ public class Solution {
         }
         return ans;
     }
+    // Encodes a tree to a single string.
+    public static String serialize(TreeNode root) {
+        StringBuilder sb=new StringBuilder();
+        if(root==null)return new String(sb);
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(root);
+        while(!queue.isEmpty()){
+            TreeNode node=queue.poll();
+            if(node==null)
+                sb.append("null,");
+            else{
+                sb.append(node.val+",");
+                queue.offer(node.left);
+                queue.offer(node.right);
+            }
+        }
+        sb.deleteCharAt(sb.length()-1);
+        return new String(sb);
+    }
+
+    // Decodes your encoded data to tree.
+    public TreeNode deserialize(String data) {
+        if(data==null||"".equals(data))return null;
+        String[] nodes=data.split(",");
+        TreeNode root=new TreeNode(Integer.parseInt(nodes[0]));
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(root);
+        int len=nodes.length,idx=1;
+        while(idx<len-1){
+            TreeNode ptr=queue.poll();
+            if("null".equals(nodes[idx])){
+                ptr.left=null;
+            }
+            else{
+                ptr.left = new TreeNode(Integer.parseInt(nodes[idx]));
+                queue.offer(ptr.left);
+            }
+            idx++;
+            if("null".equals(nodes[idx])){
+                ptr.right=null;
+            }
+            else{
+                ptr.right = new TreeNode(Integer.parseInt(nodes[idx]));
+                queue.offer(ptr.right);
+            }
+        }
+        return root;
+    }
 
     public static void main(String[] args) {
         //testNC22();
