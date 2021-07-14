@@ -623,6 +623,43 @@ public class Solution {
         return root;
     }
 
+    //JZ38
+    List<String> strs;
+    boolean[] flags;
+    int len;
+    @Test
+    public  void permutation() {
+        //Scanner sc=new Scanner(System.in);
+        String s="asd";
+        len=s.length();
+        strs=new LinkedList<String>();
+        flags=new boolean[len];
+        char[] chs=s.toCharArray();
+        Arrays.sort(chs);
+        StringBuilder sb=new StringBuilder();
+        mutation(0,sb,chs);
+
+        String[]ans= strs.toArray(new String[len]);
+
+    }
+    public void mutation(int idx,StringBuilder sb,char[] chs){
+        if(idx==len){
+            strs.add(new String(sb));
+            return;
+        }
+        for(int i=0;i<len;i++){
+            if(flags[i]||(i>0&&chs[i]==chs[i-1]))
+                continue;
+            sb.append(chs[i]);
+            flags[i]=true;
+            mutation(idx+1,sb,chs);
+            flags[i]=false;
+            sb.deleteCharAt(sb.length()-1);
+        }
+
+
+    }
+
     public static void main(String[] args) {
         //testNC22();
 

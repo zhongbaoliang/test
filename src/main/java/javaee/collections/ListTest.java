@@ -14,11 +14,13 @@ public class ListTest {
 
     }
     public static int[] listToArray(){
-        ArrayList<Integer>list=new ArrayList<>();
+        List<Integer>list=new LinkedList<>();
         list.add(1);
         list.add(2);
         list.remove(list.size()-1);
+        Integer ints[]=list.toArray(new Integer[list.size()]);
         return list.stream().mapToInt(k->k).toArray();
+
     }
     public static  void linkedList(){
         LinkedList<Integer> list=new LinkedList<>();
