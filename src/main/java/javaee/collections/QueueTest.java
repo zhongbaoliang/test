@@ -31,6 +31,7 @@ public class QueueTest {
     public static void noBlocking(){
         Queue<Integer> queue=new LinkedList<>();
         queue.offer(2);
+        queue.peek();
         queue.poll();
         if(queue.isEmpty())return;
     }
