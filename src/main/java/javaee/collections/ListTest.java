@@ -27,6 +27,10 @@ public class ListTest {
         list.add(1);
         list.add(0,2);
         list.addFirst(6);
+        list.size();
+        for (Integer integer : list) {
+
+        }
         List<Integer>list1=new LinkedList<>(list);
 
         //Deque<Integer> deque = new LinkedList<>();
