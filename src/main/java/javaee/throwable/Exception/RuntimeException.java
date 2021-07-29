@@ -12,6 +12,7 @@ public class RuntimeException {
         String str="123*456";
         try{
             int num=Integer.parseInt(str);
+            str=Integer.toString(num);
         }catch (Exception e){
             System.out.println(e);
         }

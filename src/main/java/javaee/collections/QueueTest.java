@@ -15,6 +15,10 @@ import java.util.concurrent.ArrayBlockingQueue;
 // offer成功返回true,失败失败则等待一段时间
 // put失败返回则一直等待
 //对于非阻塞队列，一般情况下建议使用offer、poll和peek三个方法;因为有返回值
+
+//put,take  阻塞队列
+//offer,poll 非阻塞队列
+//add，remove 链表
 class User{
     int id;
     int age;

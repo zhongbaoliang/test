@@ -30,7 +30,8 @@ public class MapTest {
         map.put(3,"zxc");
         map.put(5,"zxc");//重复键值写入最新的元素
         map.put(1,"asd");
-        for (Map.Entry entry:map.entrySet()) {
+        for (Map.Entry entry:map.entrySet()) {//entry.getValue();返回的是Object
+            Integer value = (Integer) entry.getValue();
             System.out.println("key:" + entry.getKey() + ", " + "val:" + entry.getValue());
         }
     }
@@ -59,10 +60,22 @@ public class MapTest {
             System.out.println("key:" + key + ", " + "val:" + val);
 
         });
-
-
-
-
     }
+
+    @Test
+    public void test01(){//lambda
+        Map<Integer,String > map=new HashMap<>();
+        map.put(5,"asd");
+        map.put(3,"zxc");
+        map.put(5,"zxc");//重复键值写入最新的元素
+        map.put(1,"asd");
+        for(Map.Entry entry : map.entrySet()){
+            entry.getKey();
+            entry.getValue();
+
+        }
+    }
+
+
 
 }

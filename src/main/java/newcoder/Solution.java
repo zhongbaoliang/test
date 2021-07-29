@@ -660,6 +660,132 @@ public class Solution {
 
     }
 
+    //JZ51
+    @Test
+    public void JZ51(){
+        int[] nums={7,5,6,4};
+        System.out.println(reversePairs(nums));
+    }
+    public int reversePairs(int[] nums) {
+        if(nums==null||nums.length<2)return 0;
+        return mergeSort(0,nums.length-1,nums);
+    }
+
+    public int mergeSort(int left,int right,int nums[]){
+        if(left==right)return 0;
+        int mid=left+(right-left)/2;
+        int ans=0;
+        ans+=mergeSort(left,mid,nums);
+        ans+=mergeSort(mid+1,right,nums);
+        int[] arr=Arrays.copyOfRange(nums,left,right+1);
+        int i=left,j=mid+1, idx=0;
+        for(;i<=mid&&j<=right;idx++){
+            if(nums[i]>nums[j]){
+                arr[idx]=nums[j++];
+                ans+=mid-i+1;
+            }
+            else{
+                arr[idx]=nums[i++];
+            }
+        }
+
+        while(i<=mid){
+            arr[idx++]=nums[i++];
+           // ans+=right-mid;
+
+        }
+        while(j<=right){
+            arr[idx++]=nums[j++];
+        }
+        for(i=left,idx=0;i<right+1;){
+            nums[i++]=arr[idx++];
+        }
+        return ans;
+
+
+    }
+
+    @Test
+    public void JZ53(){
+        int[] nums={5,7,7,8,8,10};
+        System.out.println(bSearch(nums,8));
+    }
+    public int bSearch(int[] nums, int target) {
+        int left=0,right=nums.length-1;
+        int mid=0;
+        while(left<right){
+            mid=left+(right-left)/2;
+            if(nums[mid]<target)
+                left=mid+1;
+            else
+                right=mid-1;
+        }
+        int ans=left;
+        left=0;
+        right=nums.length-1;
+        while(left<right){
+            mid=left+(right-left)/2;
+            if(nums[mid]>target)
+                right=mid-1;
+            else
+                left=mid+1;
+        }
+        return right-ans+1;
+    }
+
+    @Test
+    public void JZ56(){
+        System.out.println(singleNumber(new int[]{5,4,5,5,4,1,4}));
+    }
+    public int singleNumber(int[] nums) {
+        int arr[]=new int[31];
+        for(int i=0;i<nums.length;i++){
+            for(int j=0;j<31;j++){
+                if(((nums[i]>>j)&1)==1)
+                    arr[j]++;
+            }
+        }
+        int ans=0,tag=1;
+        for(int i=0;i<31;i++){
+            if(arr[i]%3!=0){
+                ans+= tag<<i;
+            }
+        }
+        return ans;
+
+    }
+
+    //JZ57
+    @Test
+    public void JZ57(){
+        findContinuousSequence(9);
+    }
+
+    public int[][] findContinuousSequence(int target) {
+
+        List<int[]> list = new ArrayList<>();
+        int curSum=0;
+        for(int i=1,j=1;j<target/2+2;j++){
+            curSum+=j;
+            while(curSum>target){
+                curSum-=i;
+                i++;
+            }
+            if(curSum==target){
+                int[] arri=new int[j+1-i];
+                for(int k=i;k<j+1;k++){
+                    arri[k-i]=k;
+                }
+                list.add(arri);
+
+            }
+
+
+        }
+        return list.toArray(new int[list.size()][]);
+
+    }
+
     public static void main(String[] args) {
         //testNC22();
 
