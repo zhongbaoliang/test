@@ -148,6 +148,8 @@ public class StreamTest {
         //stream4.forEach((x)->System.out.println(x));
         //stream4.forEach(System.out::println);
         stream4.limit(10).forEach(System.out::println);
+        int a=Integer.MAX_VALUE;
+        int ans= Stream.iterate(1, x -> x + 1).limit(100).mapToInt(x -> x).sum();
 
     }
 

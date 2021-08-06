@@ -51,6 +51,7 @@ public class QueueTest {
 
     public static void deQueue(){
         Deque<Integer> deque=new ArrayDeque<>();
+        deque=new LinkedList<>();
         deque.addFirst(1);
         deque.addLast(10);
         deque.getFirst();
@@ -86,6 +87,8 @@ public class QueueTest {
 
         while(!queue.isEmpty())
             System.out.println(queue.peek().id + " " +queue.peek().age + " " + queue.poll().name);
+        PriorityQueue<Integer> priorityQueue=new PriorityQueue<>((a,b)->a-b);
+
     }
 
 }

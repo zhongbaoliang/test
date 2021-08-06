@@ -2,7 +2,7 @@ package javaee.oprationTest;
 
 import org.junit.Test;
 
-public class bitFunc {
+public class BitFunc {
     //支持操作数类型：byte,short,int long; char
     @Test
     public void test01(){
