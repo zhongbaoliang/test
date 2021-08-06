@@ -11,7 +11,7 @@ package javaee.throwable.Exception;
 
 import java.io.FileInputStream;
 
-public class OthersException {
+public class CheckedException {
     //public FileInputStream fileInputStream=new FileInputStream("F:/test.txt");
     //检查性异常，不处理时编译器会报错
 
