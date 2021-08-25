@@ -2,8 +2,10 @@ package javaee.collections;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.List;
 
 public class ArraysTest {
     @Test
@@ -36,6 +38,8 @@ public class ArraysTest {
         int[][] Arr2_1 = new int[5][6];
         int[][] Arr2_2 = Arrays.copyOfRange(Arr2_1,0,5);
         int[][] Arr2_3 = new int[3][];
+        ArrayList<Integer> alist = new ArrayList(Arrays.asList(a)) ;
+        ArrayList<Integer> arrayList = new ArrayList();
     }
 
 }

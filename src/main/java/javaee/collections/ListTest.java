@@ -10,8 +10,9 @@ public class ListTest {
         arr.set(0,2);
         List<List<Integer>> lists=new ArrayList<>();
         arr.get(5);
-
-
+        Integer[] ans1 = (Integer[]) arr.toArray();
+        int[] ans2 = arr.stream().mapToInt(x->x).toArray();
+        int[] ans3 = arr.stream().mapToInt((x)->{return x;}).toArray();
     }
     public static int[] listToArray(){
         List<Integer>list=new LinkedList<>();

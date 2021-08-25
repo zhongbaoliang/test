@@ -55,6 +55,24 @@ class TreeNode {
     TreeNode right;
     TreeNode(int x) { val = x; }
 }
+
+class Node {
+    public int val;
+    public Node left;
+    public Node right;
+
+    public Node() {}
+
+    public Node(int _val) {
+        val = _val;
+    }
+
+    public Node(int _val,Node _left,Node _right) {
+        val = _val;
+        left = _left;
+        right = _right;
+    }
+};
 public class Solution {
 
     //NC22 合并两个有序数组
@@ -621,6 +639,30 @@ public class Solution {
             }
         }
         return root;
+    }
+
+    //JZ36
+    Node pre = null, ans = null;
+    public Node treeToDoublyList(Node root) {
+        if(root==null)return null;
+        lnr(root);
+        pre.right=ans;
+        ans.left=pre;
+        return ans;
+    }
+    public void lnr(Node root){
+        if(root.left!=null)lnr(root.left);
+
+        if(root.left==null&&root.right==null&&ans==null){
+            ans =  root;
+        }
+        else{
+            pre.right=root;
+            root.left=pre;
+        }
+        pre = root;
+
+        if(root.right!=null)lnr(root.right);
     }
 
     //JZ38

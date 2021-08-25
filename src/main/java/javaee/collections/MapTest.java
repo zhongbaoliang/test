@@ -30,6 +30,11 @@ public class MapTest {
         map.put(3,"zxc");
         map.put(5,"zxc");//重复键值写入最新的元素
         map.put(1,"asd");
+        map.remove(1);
+        map.get(5);
+        for(Map.Entry entry:map.entrySet()){
+            System.out.println(entry.getKey()+" "+entry.getValue());
+        }
         for (Map.Entry entry:map.entrySet()) {//entry.getValue();返回的是Object
             Integer value = (Integer) entry.getValue();
             System.out.println("key:" + entry.getKey() + ", " + "val:" + entry.getValue());
@@ -43,6 +48,8 @@ public class MapTest {
         map.put(3,"zxc");
         map.put(5,"zxc");//重复键值写入最新的元素
         map.put(1,"asd");
+        String getK = map.getOrDefault(0,"0");
+        getK = map.get(1);
         Set<Integer> keySet = map.keySet();
         for (Integer key : keySet) {
             System.out.println("key:" + key + ", " + "val:" + map.get(key));
