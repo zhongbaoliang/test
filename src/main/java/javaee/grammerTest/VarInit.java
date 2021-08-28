@@ -25,7 +25,7 @@ public class VarInit {
         System.out.println("varInit.memberChar "+varInit.memberChar);
         System.out.println("varInit.memberString "+varInit.memberString);
         for (int i = 0; i < 5; i++) {
-            System.out.println("varInit.memberBoolArr[i]"+varInit.memberBoolArr[i]);
+            System.out.println("varInit.memberBoolArr"+varInit.memberBoolArr[i]);
         }
 
 
@@ -40,8 +40,13 @@ public class VarInit {
 
         boolean[] localBoolArr=new boolean[5];
         for (int i = 0; i < 5; i++) {
-            System.out.println("localBoolArr[i]"+localBoolArr[i]);
+            System.out.println("localBoolArr"+localBoolArr[i]);
         }
-
+        int[] localIntArr=new int[5];
+        for (int i = 0; i < 5; i++) {
+            System.out.println("localIntArr"+localIntArr[i]);
+        }
+        int a;
+        //System.out.println(a);//报错
     }
 }

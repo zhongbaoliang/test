@@ -1,5 +1,7 @@
 package javaee.collections;
 
+import org.junit.Test;
+
 import java.util.*;
 
 public class ListTest {
@@ -23,16 +25,35 @@ public class ListTest {
         return list.stream().mapToInt(k->k).toArray();
 
     }
-    public static  void linkedList(){
+    @Test
+    public  void linkedList(){
         LinkedList<Integer> list=new LinkedList<>();
         list.add(1);
         list.add(0,2);
         list.addFirst(6);
         list.size();
         for (Integer integer : list) {
-
+            System.out.println(integer);
+            list.remove(integer);//不能改，抛异常
+            integer=0;
         }
+        Iterator iterator = list.iterator();
+        while(iterator.hasNext()){
+            Integer integer = (Integer) iterator.next();
+            System.out.println(integer);
+            iterator.remove();//删除
+            integer=1;
+        }
+        System.out.println("list size "+list.size());
+
+
         List<Integer>list1=new LinkedList<>(list);
+
+        List<int[]> list2 = new LinkedList<int[]>(){
+            {
+                add(new int[]{1, 2});
+            }
+        };
 
         //Deque<Integer> deque = new LinkedList<>();
 

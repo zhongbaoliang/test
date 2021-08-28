@@ -1,4 +1,4 @@
-package javaee.thread;
+package javaee.thread.volatileTest;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

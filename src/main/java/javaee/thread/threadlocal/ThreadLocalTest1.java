@@ -10,6 +10,9 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
 //ThreadLocal
+//线程私有
+//
+//PageHelper
 //private static final ThreadLocal<?> THREAD_LOCAL
 //ThreadLocal里面有ThreadLocal.ThreadLocalMap静态内部类，
 // ThreadLocalMap里面有一个Entry数组，
@@ -61,7 +64,8 @@ public class ThreadLocalTest1 {
     }
 
     public static void main(String[] args) {
-        testExecuteSafe();
+        testExecuteNotSafe();
+        //testExecuteSafe();
     }
 }
 

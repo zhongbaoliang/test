@@ -15,6 +15,7 @@ public class StringTest {
 
         StringBuilder sb=new StringBuilder();
         sb.append(' ');
+
         if(sb.length()!=0){
             sb.deleteCharAt(sb.length()-1);
         }

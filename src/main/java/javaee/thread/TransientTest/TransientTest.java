@@ -1,4 +1,4 @@
-package javaee.tools;
+package javaee.thread.TransientTest;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;

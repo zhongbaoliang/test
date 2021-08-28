@@ -8,6 +8,22 @@ import java.util.Map;
 import java.util.Set;
 
 public class MapTest {
+    public void test(){
+        Map<Integer,String > map = new HashMap<>();
+        map.put(1,"111");
+        map.put(2,"222");
+        map.put(3,"333");
+        for(Map.Entry entry:map.entrySet()){
+            entry.setValue("123");
+        }
+
+        Iterator iterator = map.entrySet().iterator();
+        while(iterator.hasNext()){
+            Map.Entry entry = (Map.Entry) iterator.next();
+            entry.setValue("111");
+        }
+    }
+
     @Test
     public void visit01(){//迭代器
         Map<Integer,String > map=new HashMap<>();
@@ -18,6 +34,14 @@ public class MapTest {
         Iterator iterator=map.entrySet().iterator();
         while(iterator.hasNext()){
             Map.Entry entry = (Map.Entry) iterator.next();
+            System.out.println("key:" + entry.getKey() + ", " + "val:" + entry.getValue());
+            entry.setValue("123");
+        }
+
+        iterator=map.entrySet().iterator();
+        while(iterator.hasNext()){
+            Map.Entry entry = (Map.Entry) iterator.next();
+            //entry.setValue("123");
             System.out.println("key:" + entry.getKey() + ", " + "val:" + entry.getValue());
         }
 
