@@ -12,13 +12,15 @@ import java.util.concurrent.*;
 //将类实例提交到线程池
 //获取返回值
 //关闭线程池
+//call方法可以有返回值——Future<Integer>
+
 public class ImplementsCallable implements Callable {
     @Override
-    public Boolean call() throws Exception {
+    public Integer call() throws Exception {
         WebDownloader webDownloader=new WebDownloader();
         webDownloader.downloader(url,name);
         System.out.println("下载了文件名为： "+name);
-        return true;
+        return name.charAt(0)-'0';
     }
 
     private String url;//网络图片地址
@@ -41,14 +43,14 @@ public class ImplementsCallable implements Callable {
         ExecutorService ser = Executors.newFixedThreadPool(3);
 
         //提交执行 Future<Boolean> result1=ser.submit(t1);
-        Future<Boolean> future1= ser.submit(t1);
-        Future<Boolean> future2= ser.submit(t2);
-        Future<Boolean> future3= ser.submit(t3);
+        Future<Integer> future1= ser.submit(t1);
+        Future<Integer> future2= ser.submit(t2);
+        Future<Integer> future3= ser.submit(t3);
 
         //获取结果  boolean res1=future1.get();
-        boolean res1=future1.get();
-        boolean res2=future2.get();
-        boolean res3=future3.get();
+        Integer res1=future1.get();
+        Integer res2=future2.get();
+        Integer res3=future3.get();
 
         System.out.println("res1 "+res1);
         System.out.println("res2 "+res2);

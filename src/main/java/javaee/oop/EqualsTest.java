@@ -7,6 +7,8 @@ import java.util.Objects;
 //
 
 //重写equals时必须重写hashcode
+//同一个对象hashcode一定相等，hashcode相同的对象不一定是同一个对象
+//
 
 class Student{
 
