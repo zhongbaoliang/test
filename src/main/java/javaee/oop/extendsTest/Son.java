@@ -3,7 +3,7 @@ package javaee.oop.extendsTest;
 //先析构子类，再析构父类
 //属性是父类的，方法是子类的
 // 子类中使用的属性是子类的
-//自我解释，最近原则
+//自我解释，最近原则，this指针
 public class Son extends Father{
     public int a;
     public Son(int key,int val){

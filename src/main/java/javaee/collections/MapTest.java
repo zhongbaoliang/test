@@ -1,7 +1,14 @@
 package javaee.collections;
 
 import org.junit.Test;
-
+/**
+ * HashMap                 不安全      无锁                 二倍扩容
+ * HashTable                安全      全表所                二倍加一
+ * ConcurrentHashMap        安全      由分段锁到锁头结点       二倍扩容
+ *
+ *基于Hash散列与链表或红黑树
+ *
+ */
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -45,7 +52,6 @@ public class MapTest {
             //entry.setValue("123");
             System.out.println("key:" + entry.getKey() + ", " + "val:" + entry.getValue());
         }
-
     }
 
     @Test

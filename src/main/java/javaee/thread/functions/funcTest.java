@@ -7,13 +7,17 @@ package javaee.thread.functions;
 //
 
 
+import java.util.concurrent.locks.AbstractQueuedSynchronizer;
+
 public class funcTest {
+
 
 
     public static void main(String[] args) {
         Thread thread=new Thread(()->{
             System.out.println("hello");
         });
+
 
         thread.start();
         //thread.getState();

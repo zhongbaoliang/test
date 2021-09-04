@@ -1,21 +1,31 @@
-package javaee.thread;
+package javaee.thread.AQS.reentrantLockTest;
 
-import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 //隐式锁synchronized
 //显式锁Lock 更灵活
 //ReentrantLock
-//可重入锁
+//可重入锁,可以重复加锁，加几次必须释放几次，否则死锁
 //使用变量前加锁，用完后解锁
 //推荐使用以下格式
 //private final ReentrantLock lock=new ReentrantLock();
-//lock.lock();
+//
 //try{
+//    lock.lock();
 //    /*代码区*/
 //}
 //finally{
 //    lock.unlock();
 //}
+
+
+/**
+ * 包含 继承AbstractQueuedSynchronizer抽象类的静态内部类Sysc
+ * 并持有Sync的实例
+ * 并对Sync进行了两种实现（公平锁和非公平锁），默认创建的是非公平锁
+ *
+ *AQS中包含VersionId，state，和一个双向循环链表
+ *
+ */
 public class ReentrantLockTest {
     public static void main(String[] args) {
         BuyTicket unsafeBuyTicket=new BuyTicket();
@@ -46,9 +56,7 @@ class BuyTicket implements Runnable{
             finally {
                 reentrantLock.unlock();
             }
-
         }
-
     }
     private void buy(){
         if(ticketNums<=0){

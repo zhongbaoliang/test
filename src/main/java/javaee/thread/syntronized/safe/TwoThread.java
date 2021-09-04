@@ -56,15 +56,20 @@ public class TwoThread  {
             public void run() {
                 try {
                     int i = 0;
+                    lock.lock();
                     while(true){
-                        lock.lock();
+                        //lock.lock();//会死锁，因为加锁多次而只是放一次
                         condition.signal();
                         System.out.println(Thread.currentThread().getName() + "：" + i);
+                        if(i==8) {
+                            condition.signal();
+                            break;
+                        }
                         condition.await();
                         i=i+2;
-                        if(i==8)
-                            return;
                     }
+
+                    //System.out.println(Thread.currentThread().getName());
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 } finally {
@@ -77,15 +82,19 @@ public class TwoThread  {
                 try {
 
                     int i = 1;
+                    lock.lock();
                     while(true){
-                        lock.lock();
+
                         condition.signal();
                         System.out.println(Thread.currentThread().getName() + "：" + i);
+                        if(i==9) {
+                            condition.signal();
+                            break;
+                        }
                         condition.await();
                         i=i+2;
-                        if(i==9)
-                            return;
                     }
+                    //System.out.println(Thread.currentThread().getName());
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 } finally {
@@ -93,7 +102,7 @@ public class TwoThread  {
                 }
             }
         });
-
+        executorService.shutdown();
     }
 
     //使用堵塞队列结合线程使用
@@ -127,8 +136,8 @@ public class TwoThread  {
     }
 
     public static void main(String[] args) {
-        //func1();
-        func3();
+        func2();
+        //func3();
     }
 
 }

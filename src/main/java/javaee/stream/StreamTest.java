@@ -2,11 +2,9 @@ package javaee.stream;
 
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Locale;
+import java.util.*;
 import java.util.function.UnaryOperator;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 /*
 *Stream 特性
@@ -125,7 +123,11 @@ public class StreamTest {
                 new Employee(72,"shao")
         };
         Stream<Employee> stream2= Arrays.stream(employees);
-        stream2.map(Employee::getName).forEach(System.out::println);
+        Set set = stream2.filter(employee -> employee.getId()>40).collect(Collectors.toSet());
+        for (Object o : set) {
+            System.out.println(((Employee)o).getId());
+        }
+       // stream2.map(Employee::getName).forEach(System.out::println);
     }
 
     //3. 通过Stream类中的静态方法of()
