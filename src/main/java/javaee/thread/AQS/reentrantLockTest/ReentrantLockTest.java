@@ -26,6 +26,18 @@ import java.util.concurrent.locks.ReentrantLock;
  *AQS中包含VersionId，state，和一个双向循环链表
  *
  */
+
+/**
+ * ReentrantLock与synchronized的区别：
+ * 1. 所属范畴。前者是juc包下的类，后者是关键字
+ * 2. 是否是要手动释放。前者需要手动释放，后者不需要。
+ * 3. 锁定的内容。前者锁定的是线程，后者锁定的是对象。
+ * 4. 是否可中断。前者可以通过tryLock的timeout进行中断。
+ * 5. 可以通过condition.signal精确唤醒线程，而后者只能通过notify或者notifyAll随机唤醒。
+ * 6. 公平性。前者可实现公平和非公平，后者只能实现非公平。
+ *
+ */
+
 public class ReentrantLockTest {
     public static void main(String[] args) {
         BuyTicket unsafeBuyTicket=new BuyTicket();
@@ -51,6 +63,7 @@ class BuyTicket implements Runnable{
         while(flag){
             try{
                 reentrantLock.lock();
+
                 buy();
             }
             finally {

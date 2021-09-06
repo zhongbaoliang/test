@@ -1,4 +1,4 @@
-package newcoder.company.threeSixZero;
+package newcoder.over.threeSixZero;
 
 
 import java.util.Scanner;

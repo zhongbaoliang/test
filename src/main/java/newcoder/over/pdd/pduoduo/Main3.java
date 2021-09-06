@@ -1,4 +1,4 @@
-package newcoder.company.pduoduo;
+package newcoder.over.pdd.pduoduo;
 
 import java.util.Scanner;
 

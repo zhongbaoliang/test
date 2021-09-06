@@ -1,4 +1,4 @@
-package newcoder.company.pdd;
+package newcoder.over.pdd;
 
 import java.util.Arrays;
 import java.util.Scanner;

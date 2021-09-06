@@ -1,4 +1,4 @@
-package newcoder.company.yuanfudao;
+package newcoder.over.yuanfudao;
 
 import java.util.*;
 class Relation {

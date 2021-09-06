@@ -57,9 +57,12 @@ public class TwoThread  {
                 try {
                     int i = 0;
                     lock.lock();
+
                     while(true){
                         //lock.lock();//会死锁，因为加锁多次而只是放一次
                         condition.signal();
+
+
                         System.out.println(Thread.currentThread().getName() + "：" + i);
                         if(i==8) {
                             condition.signal();

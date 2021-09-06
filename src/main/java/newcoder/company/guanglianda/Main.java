@@ -1,4 +1,4 @@
-package newcoder.company.gld;
+package newcoder.company.guanglianda;
 
 import java.util.HashSet;
 import java.util.Scanner;
