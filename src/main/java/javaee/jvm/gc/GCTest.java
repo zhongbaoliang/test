@@ -20,6 +20,10 @@ package javaee.jvm.gc;
 //大对象直接放入老年代
 //存活时间达到最大（15）放入老年代
 //动态年龄判断机制：s1里面有一对象object大小为s1的1/2，将年龄大于等于object的对象直接放入老年代
+
+
+//G
+
 public class GCTest {
     public static void main(String[] args) {
         Cake c1 = new Cake(1);

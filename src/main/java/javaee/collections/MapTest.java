@@ -17,10 +17,27 @@ import java.util.Set;
 
 public class MapTest {
     public void test(){
-        Map<Integer,String > map = new HashMap<>();
-        map.put(1,"111");
-        map.put(2,"222");
-        map.put(3,"333");
+        Map<Integer,String > map = new HashMap<Integer, String>(){{
+            put(1,"111");
+            put(2,"222");
+            put(3,"333");
+        }};
+        Map<Integer,String > map1 = new HashMap<>(new HashMap<Integer, String>(){
+            {
+                put(1, "111");
+                put(2, "222");
+                put(3, "333");
+            }
+        });
+        /**
+        *
+        * 1.此种方式是匿名内部类的声明方式，所以引用中持有着外部类的引用。
+         * 所以当串行化这个集合时外部类也会被不知不觉的串行化，当外部类没有实现serialize接口时，就会报错。
+        * 2.上例中，其实是声明了一个继承自HashMap的子类。
+         * 然而有些串行化方法，例如要通过Gson串行化为json，或者要串行化为xml时，需要类库中提供的方式，
+         * 是无法串行化Hashset或者HashMap的子类的，从而导致串行化失败。解决办法：重新初始化为一个HashMap对象。
+        *
+        * */
         for(Map.Entry entry:map.entrySet()){
             entry.setValue("123");
         }

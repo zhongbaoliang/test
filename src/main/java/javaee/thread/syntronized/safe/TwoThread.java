@@ -1,6 +1,10 @@
 package javaee.thread.syntronized.safe;
 //两个线程交替执行
-
+//monitor相当于信号量
+//调用wait释放了monitor上的锁，线程阻塞队列
+    //调用notify唤醒阻塞队列上的某一个线程
+    //调用notifyAll唤醒阻塞队列上的所有线程，
+//但是对于唤醒而言，当前线程还没有加入阻塞队列，因此不会被唤醒
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ExecutorService;
@@ -43,7 +47,7 @@ public class TwoThread  {
                     }
                 }
             }
-        }).start(); ;
+        }).start();
     }
 
 
@@ -139,7 +143,7 @@ public class TwoThread  {
     }
 
     public static void main(String[] args) {
-        func2();
+        func1();
         //func3();
     }
 

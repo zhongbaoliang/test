@@ -7,6 +7,8 @@ public class StackTest {
         Stack<Integer> stack=new Stack<>();
         stack.push(1);
         stack.peek();
+        Integer pop = stack.pop();
+
 
     }
 }

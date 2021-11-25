@@ -7,6 +7,7 @@ public class StringTest {
         str.length();
         System.out.println(str1);
         String numStr="123";
+
         str.compareTo(str1);
 
 
@@ -20,6 +21,7 @@ public class StringTest {
             sb.deleteCharAt(sb.length()-1);
         }
         StringBuilder sb1=new StringBuilder(str);
+        
         String str2=new String(sb1);
         
 

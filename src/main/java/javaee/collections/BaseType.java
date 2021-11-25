@@ -1,5 +1,7 @@
 package javaee.collections;
 
+import java.util.Arrays;
+
 public class BaseType {
     public static void main(String[] args) {
         Float f=0.11111111f;

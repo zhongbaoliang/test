@@ -143,12 +143,21 @@ public class Outer {
                 System.out.println();
             }
         }.funcOfTest();
+
         new Thread(new Runnable() {
             @Override
             public void run() {
-                System.out.println("匿名内部类重写接口的run");
+                System.out.println("基于接口的匿名内部类，作为参数重写接口的run");
             }
         }).start();
+
+
+        new Thread(){
+            @Override
+            public void run() {
+                System.out.println("基于类的匿名内部类，重写接口的run");
+            }
+        }.start();
 
     }
 }
@@ -173,9 +182,5 @@ class Test{
         inner2.in2_2();
         outer.func1OfOuter();
         outer.func2OfOuter();
-
-
-
     }
-
 }

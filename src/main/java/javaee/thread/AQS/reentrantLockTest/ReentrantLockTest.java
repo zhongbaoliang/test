@@ -1,5 +1,7 @@
 package javaee.thread.AQS.reentrantLockTest;
 
+import javax.management.monitor.Monitor;
+import java.util.concurrent.locks.AbstractQueuedSynchronizer;
 import java.util.concurrent.locks.ReentrantLock;
 //隐式锁synchronized
 //显式锁Lock 更灵活
@@ -48,6 +50,8 @@ public class ReentrantLockTest {
         thread1.start();
         thread2.start();
         thread3.start();
+
+
     }
 }
 

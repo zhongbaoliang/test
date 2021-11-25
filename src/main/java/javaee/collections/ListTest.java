@@ -11,7 +11,8 @@ public class ListTest {
         ArrayList<Integer> arr=new ArrayList(Arrays.asList(arrs)) ;
         arr.set(0,2);
         List<List<Integer>> lists=new ArrayList<>();
-        arr.get(5);
+        int[][] objects = lists.toArray(new int[lists.size()][2]);
+        arr.get(5);//越界异常
         Integer[] ans1 = (Integer[]) arr.toArray();
         int[] ans2 = arr.stream().mapToInt(x->x).toArray();
         int[] ans3 = arr.stream().mapToInt((x)->{return x;}).toArray();
@@ -20,7 +21,9 @@ public class ListTest {
         List<Integer>list=new LinkedList<>();
         list.add(1);
         list.add(2);
+
         list.remove(list.size()-1);
+
         Integer ints[]=list.toArray(new Integer[list.size()]);
         return list.stream().mapToInt(k->k).toArray();
 
@@ -37,6 +40,7 @@ public class ListTest {
             list.remove(integer);//不能改，抛异常
             integer=0;
         }
+        list.clone();
         Iterator iterator = list.iterator();
         while(iterator.hasNext()){
             Integer integer = (Integer) iterator.next();

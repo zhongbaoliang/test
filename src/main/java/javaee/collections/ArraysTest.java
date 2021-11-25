@@ -38,8 +38,7 @@ public class ArraysTest {
         int[][] Arr2_1 = new int[5][6];
         int[][] Arr2_2 = Arrays.copyOfRange(Arr2_1,0,5);
         int[][] Arr2_3 = new int[3][];
-
-        ArrayList<Integer> alist = new ArrayList(Arrays.asList(a)) ;
+        List<Integer> alist = Arrays.asList(1,2,3) ;
         ArrayList<Integer> arrayList = new ArrayList();
 
 
