@@ -9,11 +9,7 @@ public class StringTest {
         String numStr="123";
 
         str.compareTo(str1);
-
-
-
         String s=str.substring(0,1);
-
         StringBuilder sb=new StringBuilder();
         sb.append(' ');
 

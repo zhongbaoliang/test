@@ -87,7 +87,7 @@ public class QueueTest {
 
         while(!queue.isEmpty())
             System.out.println(queue.peek().id + " " +queue.peek().age + " " + queue.poll().name);
-        PriorityQueue<Integer> priorityQueue=new PriorityQueue<>((a,b)->a-b);
+        PriorityQueue<Integer> priorityQueue=new PriorityQueue<>((a,b)->b-a);//默认是小顶堆
 
     }
 
