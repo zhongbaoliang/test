@@ -16,6 +16,7 @@ import java.util.Map;
 import java.util.Set;
 
 public class MapTest {
+    @Test
     public void test(){
         Map<Integer,String > map = new HashMap<Integer, String>(){{
             put(1,"111");
@@ -40,7 +41,12 @@ public class MapTest {
         * */
         for(Map.Entry entry:map.entrySet()){
             entry.setValue("123");
+            //map.remove(entry.getKey());
+
         }
+        char ch = 't';
+        int[] arr = new int[]{1,2,3,4};
+        int a = arr[ch-'a'];
         
 
         Iterator iterator = map.entrySet().iterator();
@@ -67,9 +73,12 @@ public class MapTest {
         iterator=map.entrySet().iterator();
         while(iterator.hasNext()){
             Map.Entry entry = (Map.Entry) iterator.next();
-            //entry.setValue("123");
             System.out.println("key:" + entry.getKey() + ", " + "val:" + entry.getValue());
+            iterator.remove();
+            //entry.setValue("123");
+
         }
+        System.out.println(map.size());
     }
 
     @Test
