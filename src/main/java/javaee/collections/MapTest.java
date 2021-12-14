@@ -15,8 +15,14 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
-public class MapTest {
-    @Test
+/**
+ * hashmap
+ * 2倍扩容
+ * hash码：右移16位，与操作
+ **/
+
+
+public class MapTest {  @Test
     public void test(){
         Map<Integer,String > map = new HashMap<Integer, String>(){{
             put(1,"111");

@@ -22,6 +22,16 @@ package javaee.jvm.gc;
 //动态年龄判断机制：s1里面有一对象object大小为s1的1/2，将年龄大于等于object的对象直接放入老年代
 
 
+/**
+ * 初始标记
+ * 并发标记
+ * 最终标记
+ * 垃圾回收
+ *
+ * CMS
+ * G1
+ */
+
 //G
 
 public class GCTest {

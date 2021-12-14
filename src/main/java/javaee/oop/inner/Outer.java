@@ -1,4 +1,4 @@
-package javaee.oop;
+package javaee.oop.inner;
 
 
 //内部类
