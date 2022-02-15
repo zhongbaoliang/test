@@ -27,6 +27,8 @@ public class ListTest {
 
 
 
+
+
         list.remove(list.size()-1);
 
         Integer ints[]=list.toArray(new Integer[list.size()]);

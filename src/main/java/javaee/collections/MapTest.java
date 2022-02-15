@@ -65,10 +65,14 @@ public class MapTest {  @Test
     @Test
     public void visit01(){//迭代器
         Map<Integer,String > map=new HashMap<>();
+        System.out.println(map.size());
         map.put(5,"asd");
         map.put(3,"zxc");
         map.put(5,"zxc");//重复键值写入最新的元素
         map.put(1,"asd");
+        System.out.println(map.size());
+        map.remove(1);
+        System.out.println(map.size());
         Iterator iterator=map.entrySet().iterator();
         while(iterator.hasNext()){
             Map.Entry entry = (Map.Entry) iterator.next();

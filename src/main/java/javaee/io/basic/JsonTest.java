@@ -66,7 +66,7 @@ public class JsonTest {
 
 
     public static void main(String[] args) {
-        String path = JsonTest.class.getClassLoader().getResource("send.json").getPath();
+        String path = JsonTest.class.getClassLoader().getResource("send2.json").getPath();
         String s = readJsonFile(path);
         JSONObject jObj1 = JSON.parseObject(s);
         JSONObject jObj2 = jObj1.getJSONObject("project");
@@ -78,13 +78,42 @@ public class JsonTest {
             JSONObject key = (JSONObject) jsonArray2.get(i);
             String name = (String) key.get("common.ALLTYPES_NAME");
             key.remove("iot_gateway.MQTT_CLIENT_CLIENT_ID");
-            key.put("iot_gateway.MQTT_CLIENT_CLIENT_ID", Integer.toString((301 + i)));
+            key.put("iot_gateway.MQTT_CLIENT_CLIENT_ID", Integer.toString((131 + i)));
             StringBuilder stringBuilder = new StringBuilder(name);
-            stringBuilder.append(",default,TRUE,").append(301 + i).append(",123,123");
+            stringBuilder.append(",default,TRUE,").append(131 + i).append(",123,123");
+            name = stringBuilder.toString();
+            System.out.println(name);
+
+            write(name);
+        }
+        writeFile("send.json", jObj1.toJSONString());
+    }
+
+/*
+    public static void main(String[] args) {
+        String path = JsonTest.class.getClassLoader().getResource("send1.json").getPath();
+        String s = readJsonFile(path);
+        JSONObject jObj1 = JSON.parseObject(s);
+        JSONObject jObj2 = jObj1.getJSONObject("project");
+        JSONArray jsonArray1 = jObj2.getJSONArray("_iot_gateway");
+        JSONObject jObj3 = jsonArray1.getJSONObject(0);
+        JSONArray jsonArray2 = jObj3.getJSONArray("mqtt_clients");
+        write("name,type,is gateway,MQTT client ID,MQTT user name,MQTT password");
+        JSONObject key = (JSONObject) jsonArray2.get(0);
+        //jsonArray2.remove(0);
+        for (int i = 131; i < 1000; i++) {
+            //String name = (String) key.get("common.ALLTYPES_NAME");
+            //key.remove("iot_gateway.MQTT_CLIENT_CLIENT_ID");
+            String name = Integer.toString(i);
+            key.put("common.ALLTYPES_NAME",name);
+            key.put("iot_gateway.MQTT_CLIENT_CLIENT_ID", name);
+            jsonArray2.add(key.clone());
+            StringBuilder stringBuilder = new StringBuilder(name);
+            stringBuilder.append(",default,TRUE,").append(i).append(",123,123");
             name = stringBuilder.toString();
             System.out.println(name);
             write(name);
         }
         writeFile("send.json", jObj1.toJSONString());
-    }
+    }*/
 }
